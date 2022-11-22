@@ -1,10 +1,11 @@
 // import logo from './logo.svg';
 import './App.css';
 // import TestHooks from './components/TestHooks';
-import useCustomHook from './components/useCustomHook';
+// import useCustomHook from './components/useCustomHook';
+import SearchText from './components/SearchText'; 
 
 function App() {
-  useCustomHook();
+  // useCustomHook();
 
   return (
     <div className="App">
@@ -15,6 +16,7 @@ function App() {
         </p> */}
         {/* <ParentComponent /> */}
         {/* <TestHooks /> */}
+        <SearchText />
       </header>
     </div>
   );
