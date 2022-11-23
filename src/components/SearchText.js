@@ -1,30 +1,27 @@
-import { useState, useEffect } from 'react'
-import { useDebounce } from '../hooks/useDebounce'
+import { useState, useEffect, useRef } from 'react';
+import { useDebounce } from '../hooks/useDebounce';
+import { getCharacter } from '../utils/getCharacter';
 import axios from 'axios';
 
 function SearchText() {
     const [query, setQuery] = useState('');
     const [listing, setListing] = useState([]);
     const [loading, setLoading] = useState(false);
+    const controllerRef = useRef();
 
     const searchQuery = useDebounce(query, 500);
 
-    useEffect(() => {
-        setListing('');
-        if (searchQuery || query.length < 0) {
-            fetchData();
-        }
-    }, [searchQuery]);
+    controllerRef.current = new AbortController();
 
-    const fetchData = async () => {
+    const searchCharacter = async () => {
         try {
             setListing([]);
             setLoading(true);
+            
+            const data = await getCharacter(searchQuery, controllerRef.current?.signal);
+            controllerRef.current = null;
 
-            const response = await axios.get(`https://rickandmortyapi.com/api/character/?name=${searchQuery}`);
-            console.log(response);
-
-            setListing(response.data.results);
+            setListing(data.results);
             setLoading(false);
         } catch (error) {
             console.log(error.message);
@@ -32,6 +29,17 @@ function SearchText() {
             setLoading(true);
         }
     };
+
+    useEffect(() => {
+        setListing([]);
+        if (searchQuery || query.length < 0) {
+            searchCharacter();
+        }
+        
+        return () => {
+            controllerRef.current.abort();
+        };
+    }, [searchQuery]);
 
     return (
         <div>
