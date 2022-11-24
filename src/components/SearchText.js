@@ -1,7 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { useDebounce } from '../hooks/useDebounce';
 import { getCharacter } from '../utils/getCharacter';
-import axios from 'axios';
 
 function SearchText() {
     const [query, setQuery] = useState('');
