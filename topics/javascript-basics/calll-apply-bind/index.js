@@ -21,5 +21,5 @@ printFullName.apply(person2, ["Mumbai", "Maharashtra"]);
 // bind method
 // (It binds the method with the object and return a copy of it which can be invoked later)
 
-let printName = printFullName.call(person2, "Mumbai", "Maharashtra");
+let printName = printFullName.bind(person2, "Mumbai", "Maharashtra");
 console.log(printName);
