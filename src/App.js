@@ -1,13 +1,14 @@
 import React from 'react';
-// import {ErrorBoundary} from 'react-error-boundary'
-// import logo from './logo.svg';
+import logo from './logo.svg';
 import './App.css';
+
+// import {ErrorBoundary} from 'react-error-boundary'
 // import { BrowserRouter, Route, Switch } from "react-router-dom";
 // import TestHooks from './components/TestHooks';
 // import useCustomHook from './hooks/useCustomHook';
 // import SearchText from './components/SearchText'; 
-import ErrorBoundary from './components/ErrorBoundary';
-import BuggyCounter  from './components/BuggyCounter';
+// import ErrorBoundary from './components/ErrorBoundary';
+// import BuggyCounter  from './components/BuggyCounter';
 
 /* const RouteWithLayout = ({ component: Component, layout: Layout, ...rest }) => (
   <Route {...rest} render={props => (
@@ -60,10 +61,10 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        {/* <img src={logo} className="App-logo" alt="logo" />
+        <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.js</code> and save to reload.
-        </p> */}
+        </p>
         
         {/* <ParentComponent /> */}
 
@@ -79,10 +80,10 @@ function App() {
           </Switch>
         </BrowserRouter> */}
 
-        <div>
+        {/* <div>
           <p>
             <b>
-              This is an example of error boundaries in React 16.
+              This is an example of error boundaries in React 16 Class based components.
               <br /><br />
               Click on the numbers to increase the counters.
               <br />
@@ -99,7 +100,7 @@ function App() {
           <p>These two counters are each inside of their own error boundary. So if one crashes, the other is not affected.</p>
           <ErrorBoundary><BuggyCounter /></ErrorBoundary>
           <ErrorBoundary><BuggyCounter /></ErrorBoundary>
-        </div>
+        </div> */}
 
         {/* <div>
           <button onClick={() => setExplode(e => !e)}>toggle explode</button>
